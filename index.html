@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guestbook</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <h1>Välkommen till Yuwaidas Gästbok</h1>
+    <h1>Welcome to Yuwaida's Guestbook!</h1>
+    <h3>We're delighted to have you here. This forum is a space for sharing ideas, discussions, and community.<br>
+      Take your time to explore various topics and contribute your own thoughts and experiences. <br>
+      Together, we create a positive and enriching environment.<br>
+      Looking forward to your posts and engagement!</h3>
     <form action="/submit" method="post" onsubmit="addTimestamp()">
       <input type="hidden" name="Time" id="postTime">
       <label>Name:</label> <br> <input type="text" name="Name"/> <br>
       <label>Email: </label> <br><input type="text" name="Email"/> <br>
-      <label>Hemsida:</label><br><input type="text" name="Homepage"/> <br>
-      <label>Telefon: </label><br><input type="text" name="Tel" /> <br>
-      <label>Kommentar: </label><br><input type="text" name="Comment"/> <br> <br>
-      <button type="submit">Lägg till</button>
+      <label>Homepage:</label><br><input type="text" name="Homepage"/> <br>
+      <label>Telephone: </label><br><input type="text" name="Tel" /> <br>
+      <label>Comment: </label><br><input type="text" name="Comment"/> <br> <br>
+      <button type="submit">Send</button>
     </form>
     <div>
       <hr> <!-- Horisontellt streck mellan användare -->

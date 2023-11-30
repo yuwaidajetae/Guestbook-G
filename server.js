@@ -4,6 +4,7 @@ let bodyParser = require("body-parser");
 let fs = require("fs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+// Detta används för att serva statiska filer
 app.use(express.static("public"));
 
 // Läs befintlig data från users.json om filen finns
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
     let output = "";
     if (users && users.length > 0) {
       for (let i = users.length - 1; i >= 0; i--) {
+        // Datum och tidstämpel
         let formattedTime = new Date(users[i].Time).toLocaleString('sv-SE', {
             year: 'numeric',
             month: '2-digit',
@@ -29,12 +31,12 @@ app.get("/", (req, res) => {
           });   
         output +=  `
           <div>
-          <p><strong>Tid och dag:</strong> ${formattedTime}</p>
-            <p><strong>Namn:</strong> ${users[i].Name}</p>
+          <p><strong>Time:</strong> ${formattedTime}</p>
+            <p><strong>From:</strong> ${users[i].Name}</p>
             <p><strong>Email:</strong> ${users[i].Email || ""}</p>
             <p><strong>Homepage:</strong> ${users[i].Homepage || ""}</p>
-            <p><strong>Telefon:</strong> ${users[i].Tel || ""}</p>
-            <p><strong>Kommentar:</strong> ${users[i].Comment}</p>
+            <p><strong>Telephone:</strong> ${users[i].Tel || ""}</p>
+            <p><strong>Comment:</strong> ${users[i].Comment}</p>
             <hr> <!-- Lägg till ett horisontellt streck mellan varje användare -->
           </div>
         `;
@@ -49,9 +51,9 @@ app.get("/", (req, res) => {
 
 // Route för att hantera POST-förfrågningar från formuläret
 app.post("/submit", (req, res) => {
-    let { Name, Email, From, Tel, Comment } = req.body;
+    let { Name, Email, From, Tel, Comment, Homepage } = req.body;
     let currentTime = new Date().toISOString();
-    users.push({ Name, Email, Time: currentTime, From, Tel, Comment });
+    users.push({ Name, Email, Time: currentTime, From, Tel, Comment, Homepage });
 
   // Skriv användarinformationen till users.json-filen
   fs.writeFile("users.json", JSON.stringify(users), (err) => {
